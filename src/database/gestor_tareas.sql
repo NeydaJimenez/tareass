@@ -72,7 +72,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `telefono`, `email`, `password`, `fecha_registro`, `ultimo_acceso`, `activo`) VALUES
-(10, 'Naho ', 'JM ', '6562348338', 'naho@gmail.com', 'Jimenez.61', '2026-05-06 16:12:42', '2026-05-06 16:16:19', 1);
+(10, 'Naho ', 'JM ', '6562348338', 'naho@gmail.com', '$2b$12$aS8VWhz9S5eZHTnXq8rOVOoJ/.DQ6t1MUWyiZsFMKUqTflQSz/eyS', '2026-05-06 16:12:42', '2026-05-06 16:16:19', 1);
 
 --
 -- Índices para tablas volcadas

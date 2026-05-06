@@ -76,6 +76,7 @@ def RegisterView(page: ft.Page, auth_controller):
         page.update()
     
     def registrar_click(e):
+
         if not nombre.value or not email.value or not telefono.value or not password.value or not confirm_password.value:
             mensaje.value = "Todos los campos son obligatorios"
             mensaje.color = ft.Colors.RED
@@ -94,7 +95,10 @@ def RegisterView(page: ft.Page, auth_controller):
             page.update()
             return
         
-        if not re.match(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", email.value):
+        if not re.match(
+            r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+            email.value
+        ):
             mensaje.value = "Correo electrónico inválido"
             mensaje.color = ft.Colors.RED
             page.update()
@@ -111,7 +115,12 @@ def RegisterView(page: ft.Page, auth_controller):
         exito, msg = auth_controller.registrar(usuario_data)
         
         if exito:
-            mostrar_snackbar("¡Registro exitoso! Ahora inicia sesión", ft.Colors.LIGHT_BLUE)
+
+            mostrar_snackbar(
+                "¡Registro exitoso! Ahora inicia sesión",
+                ft.Colors.LIGHT_BLUE
+            )
+
             nombre.value = ""
             apellido.value = ""
             telefono.value = ""
@@ -119,9 +128,12 @@ def RegisterView(page: ft.Page, auth_controller):
             password.value = ""
             confirm_password.value = ""
             mensaje.value = ""
+
             page.update()
             page.go("/")
+
         else:
+
             mensaje.value = msg or "Error al registrar usuario"
             mensaje.color = ft.Colors.RED
             page.update()
@@ -133,6 +145,7 @@ def RegisterView(page: ft.Page, auth_controller):
         "Registrarse",
         width=250,
         on_click=registrar_click,
+
         style=ft.ButtonStyle(
             bgcolor=ft.Colors.LIGHT_BLUE_400,
             color=ft.Colors.WHITE,
@@ -143,7 +156,9 @@ def RegisterView(page: ft.Page, auth_controller):
     
     btn_login = ft.TextButton(
         "¿Ya tienes cuenta? Inicia sesión",
+
         on_click=ir_login,
+
         style=ft.ButtonStyle(
             color=ft.Colors.LIGHT_BLUE_700
         )
@@ -151,21 +166,15 @@ def RegisterView(page: ft.Page, auth_controller):
     
     return ft.View(
         route="/register",
+
         vertical_alignment=ft.MainAxisAlignment.CENTER,
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+
         bgcolor=ft.Colors.LIGHT_BLUE_50,
-        appbar=ft.AppBar(
-            title=ft.Text("SIGE - Registro"),
-            bgcolor=ft.Colors.LIGHT_BLUE_700,
-            color=ft.Colors.WHITE,
-            leading=ft.IconButton(
-                ft.Icons.ARROW_BACK,
-                icon_color=ft.Colors.WHITE,
-                on_click=lambda _: page.go("/")
-            )
-        ),
+
         controls=[
             ft.Container(
+
                 content=ft.Column(
                     [
                         ft.Text(
@@ -174,26 +183,39 @@ def RegisterView(page: ft.Page, auth_controller):
                             weight="bold",
                             color=ft.Colors.LIGHT_BLUE_900
                         ),
+
                         ft.Container(height=10),
+
                         nombre,
                         apellido,
                         telefono,
                         email,
                         password,
                         confirm_password,
+
                         mensaje,
+
                         ft.Container(height=5),
+
                         btn_registrar,
+
                         ft.Container(height=5),
+
                         btn_login
+
                     ],
+
                     horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                     tight=True,
                     spacing=10
                 ),
+
                 padding=30,
+
                 bgcolor=ft.Colors.WHITE,
+
                 border_radius=20,
+
                 shadow=ft.BoxShadow(
                     spread_radius=1,
                     blur_radius=15,
