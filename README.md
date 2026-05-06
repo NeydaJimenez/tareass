@@ -1,4 +1,3 @@
-# Omar Daniel Ortega Valtierra 
+# Neyda Nahomi Jimenez Mtz
 ## 6D
-## Núm. control: 23308060610674
-## Especialidad: Programacion
+## Núm. control: 23308060610175
